@@ -1,0 +1,19 @@
+body {
+  background: black;
+  color: white;
+}
+
+/* Estilo para enlaces activos */
+.navbar .nav-link.active {
+  color: grey; /* Cambia al color deseado */
+  font-weight: bold; /* Puedes ajustar el estilo del texto, como el grosor de la fuente */
+  /* Otros estilos si es necesario */
+}
+
+.custom-card {
+  transition: transform 0.2s; /* Agrega una transición suave */
+}
+
+.custom-card:hover {
+  transform: scale(1.05); /* Escala la tarjeta en un 5% al pasar el mouse */
+}

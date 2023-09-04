@@ -1,0 +1,52 @@
+version: '3.9'
+services:
+  django-back:
+    container_name: django_rest_framework
+    build:
+      context: .
+      dockerfile: Dockerfile-backend
+    ports:
+      - "8001:8000"
+    volumes:
+      - ./django_rest_framework:/app/django_rest_framework
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@django_postgres:5432/django_db
+    networks:
+      - mynetwork
+
+  django-front:
+    container_name: django-front-react
+    build:
+      context: .
+      dockerfile: Dockerfile-frontend
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./django-front-react:/app/django-front-react
+    environment:
+      - VITE_API_URL=http://127.0.0.1:8001/projects/    
+    networks:
+      - mynetwork
+    depends_on:
+      - django-back
+    
+  django_db:
+    image: postgres:latest
+    container_name: django_postgres
+    environment:
+      POSTGRES_DB: django_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data  # Agregar el ./ para el volumen
+    ports:
+      - "5434:5432"  # Puedes cambiar el mapeo de puertos si es necesario
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
+
+volumes:
+  postgres_data:  # Definir el volumen para la persistencia de datos de PostgreSQL

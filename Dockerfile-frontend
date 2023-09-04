@@ -1,0 +1,27 @@
+# Utiliza la imagen base de Node.js
+FROM node:latest
+
+# Establece el directorio de trabajo en el contenedor
+WORKDIR /app/django-front-react
+
+# Copia los archivos de requerimientos al contenedor
+COPY django-front-react/package.json django-front-react/package-lock.json /app/django-front-react/
+
+RUN npm install serve -g
+
+# Instala las dependencias del frontend
+RUN npm install
+
+# Copia el resto de los archivos al contenedor
+COPY django-front-react/ /app/django-front-react/
+
+# Establece las variables de entorno
+ENV VITE_API_URL=http://127.0.0.1:8001/projects/ 
+
+RUN npm run build
+
+# Expone el puerto en el que se ejecuta el frontend React con Vite
+EXPOSE 3000
+
+# Comando para iniciar el frontend React con Vite
+CMD ["npm", "run", "serve"]

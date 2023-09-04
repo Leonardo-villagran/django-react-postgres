@@ -1,0 +1,4 @@
+django-front-react/node_modules
+django-front-react/.env
+django-front-react/.env.production
+django_rest_framework/env-django

@@ -1,0 +1,4 @@
+env-django
+db.sqlite3
+projects/__pycache__
+drfsimplecrud/__pycache__

@@ -1,0 +1,10 @@
+django-react-sqlite
++---django_rest_framework 
+|   +---drfsimplecrud          
+|   +---env-django       
+|   +---projects
++---django-front-react
+    +---node_modules        
+    +---public    
+    +---src
+        
