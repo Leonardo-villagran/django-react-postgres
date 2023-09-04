@@ -5,7 +5,7 @@ FROM node:latest
 WORKDIR /app/django-front-react
 
 # Copia los archivos de requerimientos al contenedor
-COPY django-front-react/package.json django-front-react/package-lock.json /app/django-front-react/
+COPY django-front-react/package.json /app/django-front-react/
 
 RUN npm install serve -g
 
