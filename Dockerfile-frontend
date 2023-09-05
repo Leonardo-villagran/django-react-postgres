@@ -16,7 +16,7 @@ RUN npm install
 COPY django-front-react/ /app/django-front-react/
 
 # Establece las variables de entorno
-ENV VITE_API_URL=http://127.0.0.1:8001/projects/ 
+ENV VITE_API_URL=http://web.biotico.cl:5000/projects/
 
 RUN npm run build
 
