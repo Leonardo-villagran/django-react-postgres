@@ -1,5 +1,5 @@
 # Utiliza la imagen base de Node.js
-FROM node:latest
+FROM node:18.17.1
 
 # Establece el directorio de trabajo en el contenedor
 WORKDIR /app/django-front-react
