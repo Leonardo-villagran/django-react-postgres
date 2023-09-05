@@ -6,8 +6,7 @@ WORKDIR /app/django-front-react
 
 # Copia los archivos de requerimientos al contenedor
 COPY django-front-react/package.json /app/django-front-react/
-
-RUN npm install serve -g
+COPY django-front-react/package-lock.json /app/django-front-react/
 
 # Instala las dependencias del frontend
 RUN npm install
@@ -15,14 +14,13 @@ RUN npm install
 # Copia el resto de los archivos al contenedor
 COPY django-front-react/ /app/django-front-react/
 
-RUN npm run build
-
 # Expone el puerto en el que se ejecuta el frontend React con Vite
 EXPOSE 5000
 
-# ENV VITE_API_URL=http://localhost:5000
+# Establece una variable de entorno para la URL de la API
 ENV VITE_API_URL=http://web.biotico.cl:5000
 
+# Construye la aplicación React
 RUN npm run build
 
 # Servir los archivos estáticos del build con el servidor web incorporado de Node.js
