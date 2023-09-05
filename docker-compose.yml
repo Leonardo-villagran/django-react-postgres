@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile-backend
     ports:
-      - "8001:8000"
+      - "5000:8000"
     volumes:
       - ./django_rest_framework:/app/django_rest_framework
     environment:
@@ -20,11 +20,11 @@ services:
       context: .
       dockerfile: Dockerfile-frontend
     ports:
-      - "3001:3000"
+      - "3000:3000"
     volumes:
       - ./django-front-react:/app/django-front-react
     environment:
-      - VITE_API_URL=http://127.0.0.1:8001/projects/    
+      - VITE_API_URL=http://web.biotico.cl:5000/projects/    
     networks:
       - mynetwork
     depends_on:
