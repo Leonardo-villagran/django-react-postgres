@@ -14,7 +14,7 @@ RUN pip install --no-cache-dir -r /app/django_rest_framework/requirements.txt
 COPY django_rest_framework/ /app/django_rest_framework/
 
 # Expone el puerto en el que se ejecuta el backend Django
-EXPOSE 8000
+EXPOSE 5000
 
 # Comando para iniciar el backend Django
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:5000"]

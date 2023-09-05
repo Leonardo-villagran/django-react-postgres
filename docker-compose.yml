@@ -6,13 +6,15 @@ services:
       context: .
       dockerfile: Dockerfile-backend
     ports:
-      - "5000:8000"
+      - "5000:5000"
     volumes:
       - ./django_rest_framework:/app/django_rest_framework
     environment:
       - DATABASE_URL=postgres://postgres:postgres@django_postgres:5432/django_db
     networks:
       - mynetwork
+    depends_on:
+      - django_db
 
   django-front:
     container_name: django-front-react
@@ -24,7 +26,8 @@ services:
     volumes:
       - ./django-front-react:/app/django-front-react
     environment:
-      - VITE_API_URL=http://web.biotico.cl:5000/projects/    
+      # - VITE_API_URL= http://127.0.0.1:5000/projects/
+      - VITE_API_URL= http://web.biotico.cl:5000/     
     networks:
       - mynetwork
     depends_on:
